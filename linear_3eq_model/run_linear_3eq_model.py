@@ -5,9 +5,10 @@
 ## Import irispie
 
 import sys
-sys.path.append("..")
-from IPython import embed
+sys.path.append("../..")
+
 from irispie import *
+
 
 ## Create model object
 
@@ -140,7 +141,7 @@ fig.show()
 ## Save results to a CSV file
 
 fcast_db._to_sheet(
-    "forecast.csv", 
+    "forecast-output-databank.csv", 
     range=qq(2000,1)>>fcast_range[-1],
     frequency=Frequency.QUARTERLY,
 )
