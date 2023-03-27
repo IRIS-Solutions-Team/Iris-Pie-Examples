@@ -7,7 +7,7 @@
 ```
 •
 ├─ irispie
-└─ irispie-examples
+└─ irispie_examples
 ```
 
 This means 
