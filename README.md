@@ -29,7 +29,7 @@ git clone  https://github.com/IRIS-Solutions-Team/Iris-Pie-Examples.git irispie-
 * Switch to the desired example folder, e.g.
 
 ```
-cd irispie-examples/linear_3eq_model
+cd irispie-examples/linear-3eq-model
 ```
 
 and start up the Python console of your choice, e.g.
