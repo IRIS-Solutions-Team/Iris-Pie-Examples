@@ -15,10 +15,10 @@ This means
 * Switch to the directory that directly contains `irispie`
 
 * Run the following command to clone the examples repository to the
-  `irispie-examples` folder 
+  `irispie_examples` folder 
 
 ```
-git clone  https://github.com/IRIS-Solutions-Team/Iris-Pie-Examples.git irispie-examples
+git clone  https://github.com/IRIS-Solutions-Team/Iris-Pie-Examples.git irispie_examples
 ```
 
 
@@ -29,7 +29,7 @@ git clone  https://github.com/IRIS-Solutions-Team/Iris-Pie-Examples.git irispie-
 * Switch to the desired example folder, e.g.
 
 ```
-cd irispie-examples/linear-3eq-model
+cd irispie_examples/linear_3eq_model
 ```
 
 and start up the Python console of your choice, e.g.
