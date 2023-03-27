@@ -79,7 +79,7 @@ fig.show()
 
 ## Load data from a CSV file
 
-fred_db = Databank._from_sheet("fred-data.csv", descript_row=True, descript="US macro data from FRED database")
+fred_db = Databank._from_sheet("fred_data.csv", descript_row=True, descript="US macro data from FRED database")
 
 
 ## Preprocess data
@@ -141,7 +141,7 @@ fig.show()
 ## Save results to a CSV file
 
 fcast_db._to_sheet(
-    "forecast-output-databank.csv", 
+    "forecast_output_databank.csv", 
     range=qq(2000,1)>>fcast_range[-1],
     frequency=Frequency.QUARTERLY,
 )
