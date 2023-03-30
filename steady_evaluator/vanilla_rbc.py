@@ -67,7 +67,7 @@ chk = m.check_steady(details=True)
 steady = m.create_steady_evaluator()
 
 # Evaluate the equations at a valid steady state
-x0 = steady.init
+x0 = steady.initial_guess
 y0 = steady.eval(x0)
 
 # Change one of the values and evaluate the equations again
