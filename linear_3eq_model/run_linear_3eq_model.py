@@ -123,7 +123,13 @@ fred_db.shk_diff_cpi[qq(2022,3)] = -2
 print("Necessary initial conditions")
 print(m.get_initials())
 
-fcast_db = m.simulate(fred_db, fcast_range)
+mm = m.copy()
+mm.alter_num_variants(2)
+
+mm[1].assign(c0_diff_cpi=0.8)
+mm[1].solve()
+
+fcast_db = mm.simulate(fred_db, fcast_range)
 
 fig = make_subplots(
     2, 2, 
