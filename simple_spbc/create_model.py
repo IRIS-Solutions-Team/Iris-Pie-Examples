@@ -37,20 +37,39 @@ m.assign(
 
     A = 1,
     P = 1,
-    Pk = 10,
+    Pk = 5,
 )
 
 
-q = m._get_quantities(kind=TRANSITION_VARIABLE | MEASUREMENT_VARIABLE)
-q = filter_quantities_by_name(q, exclude_names=["A", "P"])
+select_index = lambda q: [ 
+    i for i, j in enumerate(q) 
+    if j.human not in ["A", "P", "Short", "Infl", "Long", "Growth", "Wage"]
+]
 
-s = m.create_steady_evaluator(quantities=q)
+q1 = m._get_quantities(kind=TRANSITION_VARIABLE | MEASUREMENT_VARIABLE)
+s1 = m.create_steady_evaluator(quantities=q1)
+ix1 = select_index(q1)
 
-r = sp_.optimize.root(
-    s.eval_with_jacobian,
-    s.initial_guess,
+q2 = m._get_quantities(kind=TRANSITION_VARIABLE | MEASUREMENT_VARIABLE)
+q2 = filter_quantities_by_name(q2, exclude_names=["A", "P"])
+s2 = m.create_steady_evaluator(quantities=q2, print_iter=True)
+ix2 = select_index(q2)
+
+r1 = sp_.optimize.root(
+    s1.eval_with_jacobian,
+    s1.initial_guess,
     method="lm",
     jac=True,
 )
 
+r2 = sp_.optimize.root(
+    s2.eval_with_jacobian,
+    s2.initial_guess,
+    method="lm",
+    jac=True,
+)
+
+s3 = m.create_steady_evaluator(quantities=q2, print_iter=False, flat=False)
+s3.update()
+j3 = s3._jacobian.eval(s3._x, None)
 

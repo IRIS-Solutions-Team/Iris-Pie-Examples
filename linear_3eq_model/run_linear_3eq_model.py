@@ -6,6 +6,7 @@
 
 import sys
 sys.path.append("../..")
+from pprint import pprint
 
 from irispie import *
 
@@ -32,7 +33,7 @@ m.assign(
 
 m.steady()
 
-chk = m.check_steady(details=True, )
+chk = m.check_steady(details=True, when_fails="warning")
 
 print(m.get_steady_levels())
 
@@ -56,6 +57,7 @@ ss_db.add_steady(m, sim_range, deviation=True)
 # Equivalent to ss_db.add_zero(m, sim_range)
 
 in_db = ss_db.copy()
+
 in_db.shk_y_gap[start_sim>>start_sim+3] = [1, 1.5, 0.5, 0.2]
 
 out_db = m.simulate(in_db, sim_range, deviation=deviation)
@@ -71,7 +73,6 @@ out_db.rs          .plot(subplot=(2, 1), figure=fig)
 out_db.shk_y_gap   .plot(subplot=(2, 2), figure=fig, xline=ii(0))
 
 fig.show()
-
 
 
 #################################################################################
@@ -121,7 +122,7 @@ fred_db.shk_diff_cpi = Series()
 fred_db.shk_diff_cpi[qq(2022,3)] = -2
 
 print("Necessary initial conditions")
-print(m.get_initials())
+pprint(m.get_initials())
 
 mm = m.copy()
 mm.alter_num_variants(2)
