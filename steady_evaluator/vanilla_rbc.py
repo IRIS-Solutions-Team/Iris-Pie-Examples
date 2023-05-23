@@ -96,7 +96,7 @@ m.assign(
 q = m._get_quantities(kind=TRANSITION_VARIABLE)
 q.pop(1)
 
-s = m.create_steady_evaluator(quantities=q, print_iter=0, default_missing_level=1, sparse_jacobian=True)
+s = m.create_steady_evaluator(quantities=q, print_iter=True, default_missing_level=1, )
 
 r2 = sp_.optimize.root(
     s.eval_with_jacobian,
@@ -104,5 +104,3 @@ r2 = sp_.optimize.root(
     method="lm",
     jac=True,
 )
-s._iter_printer.print_footer()
-
